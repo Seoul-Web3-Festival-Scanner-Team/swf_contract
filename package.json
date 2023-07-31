@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "main": "node main.js",
     "nodeLocal": "npx hardhat node --network local",
     "compile": "npx hardhat compile",
     "deployMain": "npx hardhat run scripts/deploy.js --network cronos",
-    "deployTest": "npx hardhat run scripts/deploy.js --network cronosTestnet",
+    "deployTest": "npx hardhat run scripts/deploy.js --network croT",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

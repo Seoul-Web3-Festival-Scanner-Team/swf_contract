@@ -1,8 +1,10 @@
-import * as dotenv from "dotenv";
-import * as hre from "hardhat";
-import * as fs from "fs";
+// import * as dotenv from "dotenv";
+// import * as hre from "hardhat";
+// import * as fs from "fs";
 
-dotenv.config();
+require("dotenv").config();
+const hre = require("hardhat");
+const fs = require("fs");
 
 async function deploy() {
     console.log(
@@ -11,29 +13,29 @@ async function deploy() {
     const ethers = hre.ethers;
 
     const [deployer] = await ethers.getSigners();
-    const balance = await deployer.getBalance();
-    const gasPriceData = await ethers.provider.getGasPrice();
+    // const balance = await deployer.
+    // const gasPriceData = await ethers.provider.getGasPrice();
     console.log("Deployer :", deployer.address);
     // console.log("Balance :", formatSingleNumber(balance));
-    console.log("Gas Price :", ethers.utils.formatUnits(gasPriceData, "gwei"));
+    // console.log("Gas Price :", ethers.utils.formatUnits(gasPriceData, "gwei"));
 
     const contractName = "SWFContract";
     const Contract = await ethers.getContractFactory(contractName);
-    const contract = await Contract.deploy(ethers.utils.formatUnits(5, "wei"));
-    const result = await contract.deployed();
+    const contract = await Contract.deploy();
+    const result = await contract.waitForDeployment();
 
     console.log(
         "Deploy Success ===================================================="
     );
-    console.log("Address :", result.address);
+    console.log("Address :", await result.getAddress());
 
     const deployedJson = {};
-    deployedJson[contractName] = result.address;
+    deployedJson[contractName] = await result.getAddress();
 
     fs.writeFileSync("deployed-address.json", JSON.stringify(deployedJson));
 
-    const usedData = await deployer.getBalance();
-    console.log("Gas Used:", ethers.utils.formatEther(`${balance - usedData}`));
+    // const usedData = await deployer.getBalance();
+    // console.log("Gas Used:", ethers.formatEther(`${balance - usedData}`));
     // console.log("Balance :", formatSingleNumber(usedData));
     console.log(
         "Deploy Over ======================================================="

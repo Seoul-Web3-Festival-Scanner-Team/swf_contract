@@ -1,6 +1,14 @@
-import "@nomicfoundation/hardhat-toolbox";
-import * as dotenv from "dotenv";
-dotenv.config();
+require("@nomicfoundation/hardhat-toolbox");
+require("dotenv").config();
+
+// const ethers = require("ethers");
+// const provider = new ethers.providers.getDefaultProvider(
+//     "http://127.0.0.1:8545/"
+// );
+// const gasPrice = ethers.utils.formatUnits(
+//     ethers.utils.parseUnits("100", "gwei"),
+//     "wei"
+// );
 
 const config = {
   solidity: "0.8.17",
@@ -21,14 +29,14 @@ const config = {
         url: process.env.MAINNET_RPC_URL,
         blockNumber: 16024306,
       },
-      gasPrice: parseInt(gasPrice),
+      // gasPrice: parseInt(gasPrice),
       initialBaseFeePerGas: 0,
       loggingEnabled: true,
     },
     mainLocal: {
       chainId: 31337,
       url: "http://127.0.0.1:8545/",
-      gasPrice: parseInt(gasPrice),
+      // gasPrice: parseInt(gasPrice),
       initialBaseFeePerGas: 0,
       loggingEnabled: true,
     },
@@ -36,19 +44,20 @@ const config = {
       chainId: 1,
       url: process.env.MAINNET_RPC_URL,
       accounts: [process.env.PRIVATE_KEY],
-      gasPrice: parseInt(gasPrice),
+      // gasPrice: parseInt(gasPrice),
       initialBaseFeePerGas: 0,
       loggingEnabled: true,
     },
-    cronosTestnet: {
-      chainId: 3,
+    croT: {
+      chainId: 338,
       url: process.env.TESTNET_RPC_URL,
       accounts: [process.env.TEST_PRIVATE_KEY],
-      gasPrice: parseInt(gasPrice),
+      // gasPrice: parseInt(gasPrice),
+      gasPrice: 5000000000000,
       initialBaseFeePerGas: 0,
       loggingEnabled: true,
     },
   },
 };
 
-export default config;
+module.exports = config;
