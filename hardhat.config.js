@@ -52,8 +52,8 @@ const config = {
       chainId: 338,
       url: process.env.TESTNET_RPC_URL,
       accounts: [process.env.TEST_PRIVATE_KEY],
-      // gasPrice: parseInt(gasPrice),
-      gasPrice: 5000000000000,
+      // gasPrice: parseInt
+      gasPrice: 2500000000000,
       initialBaseFeePerGas: 0,
       loggingEnabled: true,
     },
