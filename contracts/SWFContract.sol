@@ -15,7 +15,7 @@ contract SWFContract is Ownable {
     }
 
     mapping(uint256 => mapping(string => ContractInfo[])) public datas;
-    mapping(uint256 => mapping(string => ContractInfo[])) public pendings;
+    // mapping(uint256 => mapping(string => ContractInfo[])) public pendings;
 
     constructor() {
         total = 0;
@@ -34,16 +34,16 @@ contract SWFContract is Ownable {
         );
     }
 
-    function permitData(
-        uint256 _key,
-        string memory _detail
-    ) external onlyOwner {
-        ContractInfo[] memory _pendings = pendings[_key][_detail];
+    // function permitData(
+    //     uint256 _key,
+    //     string memory _detail
+    // ) external onlyOwner {
+    //     ContractInfo[] memory _pendings = pendings[_key][_detail];
 
-        for (uint256 i = 0; i < _pendings.length; i++) {
-            datas[_key][_detail].push(_pendings[i]);
-        }
+    //     for (uint256 i = 0; i < _pendings.length; i++) {
+    //         datas[_key][_detail].push(_pendings[i]);
+    //     }
 
-        delete pendings[_key][_detail];
-    }
+    //     delete pendings[_key][_detail];
+    // }
 }
