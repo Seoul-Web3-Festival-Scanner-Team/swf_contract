@@ -14,7 +14,7 @@ contract SWFContract is Ownable {
         uint256 contractDate;
     }
 
-    mapping(uint256 => mapping(string => ContractInfo[])) public datas;
+    mapping(string => mapping(string => ContractInfo[])) public datas;
     // mapping(uint256 => mapping(string => ContractInfo[])) public pendings;
 
     constructor() {
@@ -22,7 +22,7 @@ contract SWFContract is Ownable {
     }
 
     function registerData(
-        uint256 _key,
+        string memory _key,
         string memory _detail,
         uint256 _rentStart,
         uint256 _rentEnd,
