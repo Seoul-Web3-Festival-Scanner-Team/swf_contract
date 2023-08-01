@@ -37,8 +37,8 @@
       ]
     },
     "C:\\Users\\Dean\\Desktop\\Hackerton\\swf_contract\\contracts\\SWFContract.sol": {
-      "lastModificationDate": 1690876937558,
-      "contentHash": "d23fb45edf1e469055d145c9e71cd0ff",
+      "lastModificationDate": 1690891153655,
+      "contentHash": "07061ee509319e5b53cdd1e079d1ff76",
       "sourceName": "contracts/SWFContract.sol",
       "solcConfig": {
         "version": "0.8.17",
