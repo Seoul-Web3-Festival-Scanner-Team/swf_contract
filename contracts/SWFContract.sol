@@ -8,13 +8,15 @@ contract SWFContract is Ownable {
     uint256 public total;
 
     struct ContractInfo {
+        string detail;
         uint8 rentType; // 0: 전세, 1: 월세
         uint256 rentStart;
         uint256 rentEnd;
         uint256 contractDate;
     }
 
-    mapping(string => mapping(string => ContractInfo[])) public datas;
+    mapping(string => ContractInfo[]) public datas;
+
     // mapping(uint256 => mapping(string => ContractInfo[])) public pendings;
 
     constructor() {
@@ -22,15 +24,15 @@ contract SWFContract is Ownable {
     }
 
     function registerData(
-        string memory _key,
+        string memory _address,
         string memory _detail,
         uint256 _rentStart,
         uint256 _rentEnd,
         uint256 _contractDate,
         uint8 _rentType
     ) external {
-        datas[_key][_detail].push(
-            ContractInfo(_rentType, _rentStart, _rentEnd, _contractDate)
+        datas[_address].push(
+            ContractInfo(_detail, _rentType, _rentStart, _rentEnd, _contractDate)
         );
     }
 
